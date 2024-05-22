@@ -5,6 +5,7 @@ import { Order } from "@/interfaces/order";
 import { useState } from "react";
 import { useAppDispatch } from "@/redux/store/store";
 import { updateStatus } from "@/redux/slices/orderSlice";
+import { ButtonOptions } from "./buttons/ButtonOptions";
 
 export default function OrderComponent({ order }: { order: Order }) {
     const [showAll, setShowAll] = useState(false);
@@ -71,15 +72,15 @@ export default function OrderComponent({ order }: { order: Order }) {
                     <h3 className={`text-md font-semibold w-4/12 flex items-center justify-center ${getTextColor(order.status)}`}>{order.status}</h3>
                 </div>
                 <div className="flex flex-row items-center justify-center space-x-2 py-4 bg-white text-sm">
-                    <button className="w-fit bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "done")}>
+                    <ButtonOptions color="#22C55E" textColor="#fff" hoverColor="#15803D" onClick={() => handleCurrentState(order.id, "done")}>
                         Delivered
-                    </button>
-                    <button className="w-fit bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "preparing")}>
+                    </ButtonOptions>
+                    <ButtonOptions color="#EAB308" textColor="#fff" hoverColor="#A16207" onClick={() => handleCurrentState(order.id, "preparing")}>
                         Preparing
-                    </button>
-                    <button className="w-fit bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "pending")}>
+                    </ButtonOptions>
+                    <ButtonOptions color="#EF4444" textColor="#fff" hoverColor="#B91C08" onClick={() => handleCurrentState(order.id, "pending")}>
                         Cancel
-                    </button>
+                    </ButtonOptions>
                 </div>
             </div>
 

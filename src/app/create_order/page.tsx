@@ -5,12 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { useAppSelector, useAppDispatch } from "@/redux/store/store";
 import { addFood, deleteFood, clearList } from "@/redux/slices/foodSlice";
 import { addOrder } from "@/redux/slices/orderSlice";
-import { useRouter } from "next/navigation";
+import ButtonGoBack from "@/components/buttons/ButtonGoBack";
 
 
 export default function CreateOrder() {
-
-    const router = useRouter();
 
     const foodListState = useAppSelector((state) => state.food.foodList);
     const dispatch = useAppDispatch();
@@ -57,16 +55,34 @@ export default function CreateOrder() {
     }
 
     return (
-        <div className="flex flex-col items-center">
-            <h1 className="text-4xl font-bold">Create an order - {foodListState.length} food(s) added</h1>
-            <div className="flex flex-row items-center justify-center w-full  px-8 py-8 space-x-8">
-                <form onSubmit={handleFoodSubmit} className=" flex flex-col gap-4 w-1/2 mx-auto p-4 border border-gray-300 rounded-md shadow-md">
-                    <input type="text" name="foodName" placeholder="Food name" className="w-full border border-gray-300 rounded-md p-2" />
-                    <input type="text" name="foodRequirements" placeholder="Food requirements" className="w-full border border-gray-300 rounded-md p-2" />
-                    <input type="number" name="foodQuantity" placeholder="Quantity" className="w-full border border-gray-300 rounded-md p-2" />
-                    <button type="submit" className=" bg-green-500 text-white rounded-md p-2">Submit</button>
-                </form>
-                <div className="flex flex-col justify-center items-center w-1/2">
+        <div className="flex flex-col h-screen items-center py-8 mx-4 md:mx-10 lg:mx-20 font-poppins text-white relative">
+            <ButtonGoBack />
+            <h1 className="text-xl font-bold pb-8">Create an order - {foodListState.length} {foodListState.length === 0 || foodListState.length > 1 ? "items" : "item"} added</h1>
+            <div className="flex flex-col md:flex-row w-full items-center md:items-start">
+                <div className="flex flex-col w-1/2 p-8 test">
+                    <form onSubmit={handleFoodSubmit} className=" flex flex-col gap-4 w-1/2 mx-auto p-4 border border-gray-300 rounded-md shadow-md">
+                        <input type="text" name="foodName" placeholder="Food name" className="w-full border border-gray-300 rounded-md p-2" />
+                        <input type="text" name="foodRequirements" placeholder="Food requirements" className="w-full border border-gray-300 rounded-md p-2" />
+                        <input type="number" name="foodQuantity" placeholder="Quantity" className="w-full border border-gray-300 rounded-md p-2" />
+                        <button type="submit" className=" bg-green-500 text-white rounded-md p-2">Submit</button>
+                    </form>
+                    <div className="flex flex-col items-center w-1/2 mx-auto">
+                        <form onSubmit={handleOrderSubmit} className="flex flex-col gap-4 w-full mx-auto p-4 border border-gray-300 rounded-md shadow-md">
+                            <input type="text" name="servedBy" placeholder="Customer name" className="w-full border border-gray-300 rounded-md p-2" />
+                            {foodListState.length > 0 && (
+                                <div className="flex flex-row items-center justify-center space-x-4">
+                                    <button className="bg-blue-500 text-white rounded-md p-2 mt-4" onClick={() => dispatch(clearList())}>
+                                        Clear food list
+                                    </button>
+                                    <button className="bg-blue-500 text-white rounded-md p-2 mt-4">
+                                        Submit new order
+                                    </button>
+                                </div>
+                            )}
+                        </form>
+                    </div>
+                </div>
+                <div className="flex flex-col w-1/2 p-8 test">
                     <div className="w-full mx-auto p-4 border border-gray-300 rounded-md shadow-md">
                         <h2 className="text-2xl font-bold text-center">
                             Food list
@@ -89,28 +105,8 @@ export default function CreateOrder() {
                             </ul>
                         )}
                     </div>
-
                 </div>
             </div>
-            <div className="flex flex-col items-center w-1/2 mx-auto">
-                <form onSubmit={handleOrderSubmit} className="flex flex-col gap-4 w-full mx-auto p-4 border border-gray-300 rounded-md shadow-md">
-                    <input type="text" name="servedBy" placeholder="Customer name" className="w-full border border-gray-300 rounded-md p-2" />
-                    {foodListState.length > 0 && (
-                        <div className="flex flex-row items-center justify-center space-x-4">
-                            <button className="bg-blue-500 text-white rounded-md p-2 mt-4" onClick={() => dispatch(clearList())}>
-                                Clear food list
-                            </button>
-                            <button className="bg-blue-500 text-white rounded-md p-2 mt-4">
-                                Submit new order
-                            </button>
-                        </div>
-                    )}
-                </form>
-            </div>
-
-            <button className="bg-blue-500 text-white rounded-md p-2 mt-4" onClick={() => router.push("/")}>
-                Go back
-            </button>
 
         </div>
     );

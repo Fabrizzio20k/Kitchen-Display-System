@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "Create Order",
     description: "Create an order for the kitchen display system",
     icons: {
-        icon: "/icons/logo_ico.ico",
+        icon: "/icons/icon.ico",
     }
 };
 
