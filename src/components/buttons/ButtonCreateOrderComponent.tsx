@@ -34,13 +34,13 @@ const ButtonText = styled.span`
 `;
 
 export default function ButtonCreateOrderComponent() {
-    const router = useRouter();
-    return (
-        <Button onClick={() => router.push("/create_order")}>
-            <ButtonWrapper>
-                <ButtonText>New Order</ButtonText>
-                <FaCirclePlus size={30} className='text-green-950' />
-            </ButtonWrapper>
-        </Button>
-    )
+  const router = useRouter();
+  return (
+    <Button onClick={() => router.push("/create_order")}>
+      <ButtonWrapper>
+        <ButtonText>New Order</ButtonText>
+        <FaCirclePlus size={30} className='text-green-950' />
+      </ButtonWrapper>
+    </Button>
+  )
 }
