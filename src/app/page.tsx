@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       )}
       {orderListState.length > 0 && (
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-4">
           {orderListState.map((order) => (
             <OrderComponent key={order.id} order={order} />
           ))}
