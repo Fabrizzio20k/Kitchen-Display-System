@@ -4,6 +4,7 @@ import { Order } from "@/interfaces/order";
 import { v4 as uuidv4 } from "uuid";
 import { useAppSelector, useAppDispatch } from "@/redux/store/store";
 import { addFood, deleteFood, clearList } from "@/redux/slices/foodSlice";
+import { addOrder } from "@/redux/slices/orderSlice";
 import { useRouter } from "next/navigation";
 
 
@@ -33,7 +34,7 @@ export default function CreateOrder() {
             time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
         };
 
-        console.log(newOrder);
+        dispatch(addOrder(newOrder));
 
         form.reset();
         dispatch(clearList());
@@ -95,7 +96,7 @@ export default function CreateOrder() {
                 <form onSubmit={handleOrderSubmit} className="flex flex-col gap-4 w-full mx-auto p-4 border border-gray-300 rounded-md shadow-md">
                     <input type="text" name="servedBy" placeholder="Customer name" className="w-full border border-gray-300 rounded-md p-2" />
                     {foodListState.length > 0 && (
-                        <div>
+                        <div className="flex flex-row items-center justify-center space-x-4">
                             <button className="bg-blue-500 text-white rounded-md p-2 mt-4" onClick={() => dispatch(clearList())}>
                                 Clear food list
                             </button>

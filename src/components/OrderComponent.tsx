@@ -3,9 +3,12 @@
 import FoodComponent from "./FoodComponent";
 import { Order } from "@/interfaces/order";
 import { useState } from "react";
+import { useAppDispatch } from "@/redux/store/store";
+import { updateStatus, deleteOrder } from "@/redux/slices/orderSlice";
 
 export default function OrderComponent({ order }: { order: Order }) {
     const [showAll, setShowAll] = useState(false);
+    const dispatch = useAppDispatch();
 
     const handleToggleShowAll = () => {
         setShowAll(!showAll);
@@ -37,17 +40,14 @@ export default function OrderComponent({ order }: { order: Order }) {
         }
     }
 
-    const handleCurrentState = (status: string) => {
+    const handleCurrentState = (id: string, status: string) => {
         switch (status) {
             case "done":
-                order.status = "done";
-                console.log(order);
+                dispatch(updateStatus({ id, status }));
             case "preparing":
-                order.status = "preparing";
-                console.log(order);
+                dispatch(updateStatus({ id, status }));
             case "pending":
-                order.status = "pending";
-                console.log(order);
+                dispatch(updateStatus({ id, status }));
             default:
                 return '';
         }
@@ -63,13 +63,13 @@ export default function OrderComponent({ order }: { order: Order }) {
                     <h3 className="text-lg font-semibold">{order.time}</h3>
                 </div>
                 <div className="flex flex-row justify-center space-x-4 my-4">
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("done")}>
+                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "done")}>
                         Mark as delivered
                     </button>
-                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("preparing")}>
+                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "preparing")}>
                         Preparing
                     </button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("pending")}>
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "pending")}>
                         Cancel
                     </button>
                 </div>
