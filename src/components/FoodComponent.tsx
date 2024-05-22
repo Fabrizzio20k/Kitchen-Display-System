@@ -1,7 +1,4 @@
 import { Food } from "@/types/food";
-import { useState } from "react";
-
-
 
 export default function FoodComponent({ food }: { food: Food }) {
     return (
