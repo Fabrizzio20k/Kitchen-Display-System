@@ -46,7 +46,7 @@ export default function CreateOrderForm() {
             quantity: parseInt(formData.get("foodQuantity") as string),
         };
         dispatch(addFood(newFood));
-        //form.reset();
+        form.reset();
     }
 
     return (

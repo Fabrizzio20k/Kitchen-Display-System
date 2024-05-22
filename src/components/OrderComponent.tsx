@@ -2,13 +2,11 @@
 
 import FoodComponent from "./FoodComponent";
 import { Order } from "@/interfaces/order";
-import { useState } from "react";
 import { useAppDispatch } from "@/redux/store/store";
 import { updateStatus } from "@/redux/slices/orderSlice";
 import { ButtonOptions } from "./buttons/ButtonOptions";
 
 export default function OrderComponent({ order }: { order: Order }) {
-    const [showAll, setShowAll] = useState(false);
     const dispatch = useAppDispatch();
 
     const getOrderBorderClass = (status: string) => {

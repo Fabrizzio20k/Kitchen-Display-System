@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaCirclePlus } from "react-icons/fa6";
+import { IoArrowBackCircle } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 
 const Button = styled.button`
@@ -39,7 +39,7 @@ export default function ButtonGoBack() {
     <Button onClick={() => router.push("/")}>
       <ButtonWrapper>
         <ButtonText>Go Back</ButtonText>
-        <FaCirclePlus size={30} className='text-blue-950' />
+        <IoArrowBackCircle size={30} className='text-blue-950' />
       </ButtonWrapper>
     </Button>
   )
