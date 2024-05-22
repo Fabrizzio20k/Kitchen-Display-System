@@ -8,15 +8,65 @@ import { useRouter } from "next/navigation";
 
 
 const orderList: Order[] = [
-  { id: "1", customerName: "John Doe", status: "pending", foods: [{ id: "1", name: "Pizza", quantity: 1, requirements: "Extra cheese" }] },
   {
-    id: "2", customerName: "Jane Doe", status: "pending", foods: [{ id: "2", name: "Burger", quantity: 1, requirements: "No pickles" },
-    { id: "3", name: "Fries", quantity: 1, requirements: "Extra salt" }]
+    id: "1",
+    customerName: "John Doe",
+    foods: [
+      {
+        id: "1",
+        name: "Burger",
+        quantity: 1,
+        requirements: "No onions",
+      },
+      {
+        id: "2",
+        name: "Fries",
+        quantity: 100,
+        requirements: "Extra salt",
+      },
+    ],
+    status: "pending",
+    time: "12:00 PM",
   },
-  { id: "3", customerName: "John Smith", status: "preparing", foods: [{ id: "4", name: "Chicken", quantity: 1, requirements: "Extra spicy" }] },
   {
-    id: "4", customerName: "Jane Smith", status: "done", foods: [{ id: "5", name: "Salad", quantity: 1, requirements: "No onions" },
-    ]
+    id: "2",
+    customerName: "Jane Doe",
+    foods: [
+      {
+        id: "3",
+        name: "Pizza",
+        quantity: 1,
+        requirements: "Extra cheese",
+      },
+      {
+        id: "4",
+        name: "Coke",
+        quantity: 1,
+        requirements: "No ice",
+      },
+    ],
+    status: "preparing",
+    time: "12:30 PM",
+  },
+  {
+    id: "3",
+    customerName: "John Smith",
+    foods: [
+      {
+        id: "5",
+        name: "Pasta",
+        quantity: 1,
+        requirements: "No cheese",
+      },
+      {
+        id: "6",
+        name: "Salad",
+        quantity: 1,
+        requirements: "No onions",
+      },
+    ],
+    status: "done",
+    time: "13:00 PM",
   },
 
 ];

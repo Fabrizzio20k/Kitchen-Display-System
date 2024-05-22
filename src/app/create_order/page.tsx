@@ -29,7 +29,8 @@ export default function CreateOrder() {
             id: uuidv4(),
             customerName: formData.get("servedBy") as string,
             foods: foodListState,
-            status: "pending"
+            status: "pending",
+            time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
         };
 
         console.log(newOrder);

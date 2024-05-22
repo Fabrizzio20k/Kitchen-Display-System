@@ -5,4 +5,5 @@ export interface Order {
     customerName: string;
     foods: Food[];
     status: "pending" | "preparing" | "done";
+    time: string;
 }
