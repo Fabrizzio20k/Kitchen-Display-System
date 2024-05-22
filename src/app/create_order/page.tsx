@@ -2,12 +2,14 @@
 import { Food } from "@/types/food";
 import { Order } from "@/interfaces/order";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 
 export default function CreateOrder() {
 
     const [foodList, setFoodList] = useState<Food[]>([]);
 
-    const handleDeleteFood = (id: number) => {
+    const handleDeleteFood = (id: string) => {
         const newFoodList = foodList.filter((food) => food.id !== id);
         setFoodList(newFoodList);
     }
@@ -20,7 +22,7 @@ export default function CreateOrder() {
         const formData = new FormData(form);
 
         const newOrder: Order = {
-            id: 1,
+            id: uuidv4(),
             customerName: formData.get("servedBy") as string,
             foods: foodList,
             status: "pending"
@@ -36,7 +38,7 @@ export default function CreateOrder() {
         const formData = new FormData(form);
 
         const newFood: Food = {
-            id: foodList.length + 1,
+            id: uuidv4(),
             name: formData.get("foodName") as string,
             requirements: formData.get("foodRequirements") as string,
             quantity: parseInt(formData.get("foodQuantity") as string),

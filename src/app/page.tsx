@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 
 const orderList: Order[] = [
-  { id: 1, customerName: "John", foods: [{ id: 1, name: "Pizza", requirements: "Extra cheese", quantity: 1, status: "pending" }], status: "pending" },
+  { id: "gaaaaa", customerName: "John", foods: [{ id: "ga1", name: "Pizza", requirements: "Extra cheese", quantity: 1, status: "pending" }], status: "pending" },
 ];
 
 
