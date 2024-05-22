@@ -50,7 +50,7 @@ export default function CreateOrderForm() {
                     placeholder="Hot Dog"
                     className="bg-mainBlue-800 w-full border border-gray-300 rounded-md p-2 text-white"
                 />
-                {errors.foodName && <span className="text-red-500 text-xs">{errors.foodName.message}</span>}
+                {errors.foodName && <span className="text-red-500 text-xs">{errors.foodName.message as string}</span>}
 
                 <label htmlFor="foodRequirements" className="text-sm">Extra requirements</label>
                 <input
@@ -71,7 +71,7 @@ export default function CreateOrderForm() {
                     placeholder="2"
                     className="bg-mainBlue-800 w-full border border-gray-300 rounded-md p-2 text-white"
                 />
-                {errors.foodQuantity && <span className="text-red-500 text-xs">{errors.foodQuantity.message}</span>}
+                {errors.foodQuantity && <span className="text-red-500 text-xs">{errors.foodQuantity.message as string}</span>}
 
                 <button type="submit" className="bg-green-500 text-white rounded-md p-2 flex flex-row justify-center items-center space-x-2">
                     <h3>Add food</h3>
@@ -91,7 +91,7 @@ export default function CreateOrderForm() {
                         placeholder="Pedro"
                         className="bg-mainBlue-800 w-full border border-gray-300 rounded-md p-2 text-white"
                     />
-                    {errorsOrder.servedBy && <span className="text-red-500 text-xs">{errorsOrder.servedBy.message}</span>}
+                    {errorsOrder.servedBy && <span className="text-red-500 text-xs">{errorsOrder.servedBy.message as string}</span>}
 
                     {foodListState.length > 0 && (
                         <div className="flex flex-row items-center justify-center space-x-4">
