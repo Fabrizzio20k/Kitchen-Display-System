@@ -57,10 +57,9 @@ export default function OrderComponent({ order }: { order: Order }) {
         <div className={`flex flex-col ${getOrderBorderClass(order.status)} border-2`}>
             <div className="flex flex-col">
                 <div className={`flex flex-row justify-between p-5 ${getOrderBackgroundColor(order.status)}`}>
-                    <h3 className="text-lg font-semibold">Order: {order.id}</h3>
-                    <h3 className="text-lg font-semibold">{order.customerName}</h3>
-                    <h3 className="text-lg font-semibold">{order.status}</h3>
+                    <h3 className="text-lg font-semibold">Customer: {order.customerName}</h3>
                     <h3 className="text-lg font-semibold">{order.time}</h3>
+                    <h3 className="text-lg font-semibold">Status: {order.status}</h3>
                 </div>
                 <div className="flex flex-row justify-center space-x-4 my-4">
                     <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "done")}>

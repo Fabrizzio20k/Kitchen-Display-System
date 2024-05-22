@@ -12,7 +12,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="h-screen items-center justify-center mx-20">
+    <main className="h-screen items-center justify-center mx-20 font-poppins">
       <button className="fixed bottom-4 right-4 px-4 py-2 text-green-600 transition">
         <FaCirclePlus size={60} onClick={() => {
           router.push("/create_order");
