@@ -53,6 +53,8 @@ export default function OrderComponent({ order }: { order: Order }) {
         }
     }
 
+
+
     return (
         <div className={`flex flex-col ${getOrderBorderClass(order.status)} border-2`}>
             <div className="flex flex-col">
