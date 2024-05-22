@@ -4,7 +4,7 @@ import FoodComponent from "./FoodComponent";
 import { Order } from "@/interfaces/order";
 import { useState } from "react";
 import { useAppDispatch } from "@/redux/store/store";
-import { updateStatus, deleteOrder } from "@/redux/slices/orderSlice";
+import { updateStatus } from "@/redux/slices/orderSlice";
 
 export default function OrderComponent({ order }: { order: Order }) {
     const [showAll, setShowAll] = useState(false);
@@ -63,14 +63,14 @@ export default function OrderComponent({ order }: { order: Order }) {
     }
 
     return (
-        <div className={`flex flex-col ${getOrderBorderClass(order.status)} border-2 h-fit max-w-96 rounded-xl overflow-hidden`}>
+        <div className={`flex flex-col ${getOrderBorderClass(order.status)} border-2 h-96 w-80 rounded-xl overflow-hidden`}>
             <div className="flex flex-col">
-                <div className={`flex flex-row justify-between p-5 ${getOrderBackgroundColor(order.status)}`}>
-                    <h3 className="text-md font-semibold">To: {order.customerName}</h3>
-                    <h3 className="text-md font-semibold">{order.time}</h3>
-                    <h3 className={`text-md font-semibold ${getTextColor(order.status)}`}>{order.status}</h3>
+                <div className={`flex flex-row justify-between p-4 w-full ${getOrderBackgroundColor(order.status)}`}>
+                    <h3 className="text-md font-semibold w-4/12 flex items-center justify-center">To: {order.customerName}</h3>
+                    <h3 className="text-md font-semibold w-4/12 flex items-center justify-center border-l-2 border-r-2 border-slate-900">{order.time}</h3>
+                    <h3 className={`text-md font-semibold w-4/12 flex items-center justify-center ${getTextColor(order.status)}`}>{order.status}</h3>
                 </div>
-                <div className="flex flex-col items-center md:flex-row justify-center space-x-2 py-4 bg-white text-sm">
+                <div className="flex flex-row items-center justify-center space-x-2 py-4 bg-white text-sm">
                     <button className="w-fit bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState(order.id, "done")}>
                         Delivered
                     </button>
@@ -83,7 +83,7 @@ export default function OrderComponent({ order }: { order: Order }) {
                 </div>
             </div>
 
-            <div className={`relative flex flex-col bg-white`}>
+            <div className={`relative flex flex-col bg-white h-96 overflow-y-scroll`}>
                 {order.foods.map((food) => (
                     <FoodComponent key={food.id} food={food} />
                 ))}

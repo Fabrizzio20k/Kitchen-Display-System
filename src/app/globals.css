@@ -50,6 +50,19 @@
   src: url('/fonts/poppins/Poppins-SemiBold.ttf') format('truetype');
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
 
 .fade-container::after {
   content: '';

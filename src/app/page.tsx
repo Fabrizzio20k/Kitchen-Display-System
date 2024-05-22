@@ -10,7 +10,7 @@ export default function Home() {
   const orderListState = useAppSelector((state) => state.order.orderList);
 
   return (
-    <main className="h-screen items-center justify-center mx-20 font-poppins py-8">
+    <main className="h-screen items-center justify-center mx-4 md:mx-10 lg:mx-20 font-poppins py-8">
       <ButtonCreateOrderComponent />
       <div className="flex justify-center text-white">
         <h1 className="text-xl font-bold pb-8 text-center">Welcome to the Kitchen Display System -
@@ -30,10 +30,12 @@ export default function Home() {
         </div>
       )}
       {orderListState.length > 0 && (
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-4">
-          {orderListState.map((order) => (
-            <OrderComponent key={order.id} order={order} />
-          ))}
+        <div className="w-full flex items-center justify-center">
+          <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
+            {orderListState.map((order) => (
+              <OrderComponent key={order.id} order={order} />
+            ))}
+          </div>
         </div>
       )}
     </main>
