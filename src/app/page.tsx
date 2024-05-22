@@ -13,9 +13,23 @@ export default function Home() {
 
   const [orderList, setOrderList] = useState<Order[]>(orderListState);
 
+  const [time, setTime] = useState(new Date());
+
   useEffect(() => {
-    setOrderList(orderListState);
-  }, [orderListState]);
+    const getCurrentTime = () => {
+      const now = new Date();
+      setTime(now);
+    };
+    getCurrentTime();
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      if (now.getSeconds() === 0) {
+        getCurrentTime();
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleOrderList = (status: string) => {
     if (status === "all") {
@@ -35,7 +49,7 @@ export default function Home() {
       <div className="flex justify-center text-white">
         <h1 className="text-xl font-bold pb-8 text-center">Welcome to the Kitchen Display System -
           {
-            ' ' + new Date().toLocaleTimeString("en-US", {
+            ' ' + time.toLocaleTimeString("en-US", {
               hour: "2-digit",
               minute: "2-digit",
               day: "2-digit",
