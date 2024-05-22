@@ -33,6 +33,9 @@ export default function CreateOrder() {
         };
 
         console.log(newOrder);
+
+        form.reset();
+        dispatch(clearList());
     }
 
     const handleFoodSubmit = (e: React.FormEvent<HTMLFormElement>) => {

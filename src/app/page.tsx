@@ -7,7 +7,19 @@ import { useRouter } from "next/navigation";
 
 
 
-const orderList: Order[] = [];
+const orderList: Order[] = [
+  { id: "1", customerName: "John Doe", status: "pending", foods: [{ id: "1", name: "Pizza", quantity: 1, requirements: "Extra cheese" }] },
+  {
+    id: "2", customerName: "Jane Doe", status: "pending", foods: [{ id: "2", name: "Burger", quantity: 1, requirements: "No pickles" },
+    { id: "3", name: "Fries", quantity: 1, requirements: "Extra salt" }]
+  },
+  { id: "3", customerName: "John Smith", status: "preparing", foods: [{ id: "4", name: "Chicken", quantity: 1, requirements: "Extra spicy" }] },
+  {
+    id: "4", customerName: "Jane Smith", status: "done", foods: [{ id: "5", name: "Salad", quantity: 1, requirements: "No onions" },
+    ]
+  },
+
+];
 
 
 export default function Home() {

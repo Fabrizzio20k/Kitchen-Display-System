@@ -37,22 +37,38 @@ export default function OrderComponent({ order }: { order: Order }) {
         }
     }
 
+    const handleCurrentState = (status: string) => {
+        switch (status) {
+            case "done":
+                order.status = "done";
+                console.log(order);
+            case "preparing":
+                order.status = "preparing";
+                console.log(order);
+            case "pending":
+                order.status = "pending";
+                console.log(order);
+            default:
+                return '';
+        }
+    }
+
     return (
         <div className={`flex flex-col ${getOrderBorderClass(order.status)} border-2`}>
             <div className="flex flex-col">
                 <div className={`flex flex-row justify-between p-5 ${getOrderBackgroundColor(order.status)}`}>
                     <h3 className="text-lg font-semibold">Order: {order.id}</h3>
-                    <h3 className="text-lg font-semibold">Served by: {order.servedBy}</h3>
+                    <h3 className="text-lg font-semibold">Customer Name: {order.customerName}</h3>
                     <h3 className="text-lg font-semibold">Status: {order.status}</h3>
                 </div>
                 <div className="flex flex-row justify-center space-x-4 my-4">
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
+                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("done")}>
                         Mark as delivered
                     </button>
-                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
+                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("preparing")}>
                         Preparing
                     </button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onClick={() => handleCurrentState("pending")}>
                         Cancel
                     </button>
                 </div>
