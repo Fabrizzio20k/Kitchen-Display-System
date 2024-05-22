@@ -15,7 +15,7 @@ export default function CreateOrderForm() {
     const foodListState = useAppSelector((state) => state.food.foodList);
     const dispatch = useAppDispatch();
 
-    const handleFoodSubmit = (data) => {
+    const handleFoodSubmit = (data: any) => {
         let newFood: Food = {
             id: uuidv4(),
             name: data.foodName,
@@ -26,7 +26,7 @@ export default function CreateOrderForm() {
         reset();
     };
 
-    const handleOrderSubmit = (data) => {
+    const handleOrderSubmit = (data: any) => {
         const newOrder: Order = {
             id: uuidv4(),
             customerName: data.servedBy,
