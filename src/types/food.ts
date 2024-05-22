@@ -3,5 +3,4 @@ export type Food = {
     name: string;
     requirements: string;
     quantity: number;
-    status: "pending" | "preparing" | "done";
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ReduxProvider from "@/redux/store/redux-provider";
 
 export const metadata: Metadata = {
   title: "Kitchen Display System",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body>{children}</body>
-    </html>
+    <ReduxProvider>
+      <html lang="es">
+        <body>{children}</body>
+      </html>
+    </ReduxProvider>
   );
 }

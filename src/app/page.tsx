@@ -3,14 +3,11 @@
 import OrderComponent from "@/components/OrderComponent";
 import { FaCirclePlus } from "react-icons/fa6";
 import { Order } from "@/interfaces/order";
-import { Food } from "@/types/food";
 import { useRouter } from "next/navigation";
 
 
 
-const orderList: Order[] = [
-  { id: "gaaaaa", customerName: "John", foods: [{ id: "ga1", name: "Pizza", requirements: "Extra cheese", quantity: 1, status: "pending" }], status: "pending" },
-];
+const orderList: Order[] = [];
 
 
 export default function Home() {
