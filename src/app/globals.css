@@ -7,3 +7,14 @@
     border: 1px solid red;
   }
 }
+
+.fade-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  /* Ajusta la altura según sea necesario */
+  background: linear-gradient(to top, white, transparent);
+}
