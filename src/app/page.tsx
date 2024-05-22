@@ -25,6 +25,10 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    setOrderList(orderListState);
+  }, [orderListState]);
+
   return (
     <main className="h-screen items-center justify-center mx-4 md:mx-10 lg:mx-20 font-poppins py-8">
       <ButtonCreateOrderComponent />
